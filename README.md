@@ -1,49 +1,112 @@
-# Image OCR Tool
+# 📷 Image to Text + 📧 SMS Spam Detection App
 
-This project provides two ways to extract text from images using OCR (Optical Character Recognition):
+This project is a web application built using **Streamlit** that performs:
 
-1. A desktop GUI script (`image_ocr.py`)
-2. A web app using Streamlit (`streamlit_ocr.py`)
+* 📷 Image to Text (OCR)
+* 📧 SMS/Email Spam Detection
 
-## Prerequisites
+It allows users to upload an image, extract text from it, and then check whether the extracted (or manually entered) text is spam or not.
 
-- Python 3.x
-- Tesseract OCR engine installed on your system.
+---
 
-### Installing Tesseract
+## 🚀 Features
 
-- On Windows: Download and install from https://github.com/UB-Mannheim/tesseract/wiki
-- On macOS: `brew install tesseract`
-- On Linux: `sudo apt-get install tesseract-ocr`
+* Upload image (`.png`, `.jpg`, `.jpeg`)
+* Extract text using OCR (EasyOCR)
+* Automatically use extracted text for spam detection
+* Manual text input option
+* Classifies message as:
 
-## Installation
+  * 🚨 Spam
+  * ✅ Not Spam
 
-1. Install the required Python packages:
-   ```
-   pip install -r requirements.txt
-   ```
+---
 
-## Usage
+## 🧠 How it works
 
-### Desktop GUI Version
+1. Image is uploaded by the user
+2. OCR extracts text using EasyOCR
+3. Text is transformed using TF-IDF Vectorizer
+4. Pre-trained ML model predicts spam or not
 
-Run the script:
+---
+
+## 📂 Project Structure
+
 ```
-python image_ocr.py
+├── sms_spam.py
+├── requirements.txt
+├── Sms_spam_detection_model.pkl
+├── tfidf_vectorizer.pkl
+└── README.md
 ```
 
-A file dialog will open. Select an image file (PNG, JPG, JPEG, BMP, TIFF, GIF). The extracted text will be displayed in a message box.
+---
 
-### Web App Version
 
-Run the Streamlit app:
-```
-streamlit run streamlit_ocr.py
-```
+## 📊 Dataset Information
 
-Open the provided URL in your browser. Upload an image file, and the extracted text will be displayed automatically.
+This model is trained on an SMS Spam dataset.
 
-## Troubleshooting
+👉 You can either:
 
-- If no text is extracted, ensure the image has clear, readable text.
-- Make sure Tesseract is properly installed and in your PATH.
+* Use your own dataset
+* Or view/download a public dataset like the **SMS Spam Collection Dataset**
+
+The dataset typically contains:
+
+* `label` → spam / ham
+* `message` → actual text
+
+---
+
+## ✍️ Usage Instructions
+
+* Upload an image to extract text
+* OR manually enter text in the input box
+* Click **"Check Spam"**
+* View the result instantly
+
+---
+
+## ⚠️ Notes
+
+* Make sure model files are present:
+
+  * `Sms_spam_detection_model.pkl`
+  * `tfidf_vectorizer.pkl`
+* EasyOCR may take a few seconds to load initially
+* Internet connection may be required for first-time OCR model download
+
+---
+
+## 🛠️ Tech Stack
+
+* Streamlit
+* EasyOCR
+* Scikit-learn
+* NumPy
+* PyTorch
+
+---
+
+## 🙌 Future Improvements
+
+* Support multiple languages in OCR
+* Add confidence score for predictions
+* Improve UI/UX
+* Add real-time API support
+
+---
+
+## 📜 License
+
+This project is for educational purposes.
+
+---
+
+## 👤 Author
+
+Harsh
+
+---
